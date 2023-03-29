@@ -27,14 +27,13 @@
     <span>emails per page</span>
     <br><br>
     <label>Spam filter</label>
-    <form:checkbox path="spamFilter" value="1"></form:checkbox>
+    <form:checkbox path="spamFilter"></form:checkbox>
     <label>Enable spam filter</label>
     <br><br>
     <label>Signature</label>
     <form:textarea path="signature"></form:textarea>
     <br><br>
     <button type="submit">update</button>
-    <%--    <button onclick="location.href='/form1'">cancel</button>--%>
     <input type="reset" value="cancel">
 </form:form>
 </body>

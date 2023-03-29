@@ -3,7 +3,7 @@ package com.codegym.exercise_1.model;
 public class Mailbox {
     private String languages;
     private Integer pageSize;
-    private String spamFilter;
+    private boolean spamFilter;
     private String signature;
 
     public String getLanguages() {
@@ -22,11 +22,11 @@ public class Mailbox {
         this.pageSize = pageSize;
     }
 
-    public String getSpamFilter() {
+    public boolean getSpamFilter() {
         return spamFilter;
     }
 
-    public void setSpamFilter(String spamFilter) {
+    public void setSpamFilter(boolean spamFilter) {
         this.spamFilter = spamFilter;
     }
 
