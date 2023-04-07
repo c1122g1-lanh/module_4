@@ -28,15 +28,19 @@
     <tr style="background: black;color: white">
         <th>Id</th>
         <th>Name</th>
+        <th>Day of Create</th>
         <th>Content</th>
+        <th>Category</th>
         <th colspan="3">Function</th>
     </tr>
     </thead>
-    <tbody th:each="blog : ${blog}">
+    <tbody th:each="blog : ${blogList}">
     <tr>
         <td th:text="${blog.id}"></td>
         <td th:text="${blog.name}"></td>
+        <td th:text="${blog.dateOfCreate}"></td>
         <td th:text="${blog.content}"></td>
+        <td th:text="${blog.category.nameCategory}"></td>
         <td><a th:href="@{/detail/{id}(id = ${blog.id})}">Detail</a></td>
         <td><a th:href="@{/edit/{id}(id = ${blog.id})}">Edit</a></td>
         <td>
@@ -49,11 +53,23 @@
     </tr>
     </tbody>
 </table>
+<div style="text-align: center">
+    <span>
+    <a th:if="${blogList.hasPrevious()}" th:href="@{/blog(page = ${blogList.number}-1)}">Trước</a>
+</span>
+    <span th:each="pageNo : ${#numbers.sequence(0,(blogList.getTotalPages()-1))}">
+<a th:href="@{/blog(page = ${pageNo})}" th:text="${pageNo}"></a>
+</span>
+    <span>
+    <a th:if="${blogList.hasNext()}" th:href="@{/blog(page = ${blogList.number}+1)}">Sau</a>
+</span>
+</div>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete ?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -63,7 +79,7 @@
                 <form action="/delete" method="post">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <input type="hidden" id="idDelete" name="id" class="btn btn-secondary">
-                    <input type="submit" class="btn btn-secondary">
+                    <button type="submit" class="btn btn-secondary">OK</button>
                 </form>
             </div>
         </div>

@@ -2,6 +2,7 @@ package com.codegym.product_management.controller;
 
 import com.codegym.product_management.model.Product;
 import com.codegym.product_management.service.impl.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,31 +11,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ProductController {
-    private final ProductService productService;
+    @Autowired
+    private ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+//    public ProductController(ProductService productService) {
+//        this.productService = productService;
+//    }
 
     @GetMapping("")
-    public String showList(Model model){
+    public String showList(Model model) {
         model.addAttribute("list", productService.findAll());
         return "/list";
     }
 
-    @GetMapping("/product/create")
-    public String showCreate(Model model){
+    @GetMapping("/create")
+    public String showCreate(Model model) {
         model.addAttribute("product", new Product());
         return "/create";
     }
+
     @PostMapping("/create")
-    public String save(Product product){
+    public String save(Product product) {
         productService.createProduct(product);
-        return "redirect:/product";
+        return "redirect:/";
     }
+
     @GetMapping("/edit/{id}")
-    public String edit( @PathVariable int id, Model model){
-        model.addAttribute("product",productService.findById(id));
+    public String edit(@PathVariable int id, Model model) {
+        model.addAttribute("product", productService.findById(id));
         return "/edit";
     }
 
@@ -45,14 +49,20 @@ public class ProductController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable int id,Model model){
-        model.addAttribute("product",productService.findById(id));
+    public String detail(@PathVariable int id, Model model) {
+        model.addAttribute("product", productService.findById(id));
         return "/detail";
     }
 
     @GetMapping("/delete/{id}")
-    public  String delete(@PathVariable int id){
+    public String delete(@PathVariable int id) {
         productService.remove(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/find")
+    public String seach(String name, Model model) {
+        model.addAttribute("list", productService.findByName(name));
+        return "/list";
     }
 }

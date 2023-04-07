@@ -16,7 +16,7 @@ public class SongController {
     @Autowired
     ISongService songService;
 
-    @GetMapping
+    @GetMapping("")
     public String showList(Model model) {
         model.addAttribute("listSong", songService.findAll());
         return "list";
@@ -51,7 +51,7 @@ public class SongController {
             return "edit";
         } else {
             songService.create(song);
-            return "redirect:";
+            return "redirect:/";
         }
     }
 

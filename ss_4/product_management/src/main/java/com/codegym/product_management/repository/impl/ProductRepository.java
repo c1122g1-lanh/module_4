@@ -48,4 +48,12 @@ public class ProductRepository implements IProductRepository {
     public void remove(int id) {
         productList.remove(findById(id));
     }
+    public List<Product> findByName(String name){
+        List<Product> list = new ArrayList<>();
+        for (Product product : productList){
+            if (product.getNameProduct().toLowerCase().contains(name.toLowerCase())){
+                list.add(product);
+            }
+        }return list;
+    }
 }

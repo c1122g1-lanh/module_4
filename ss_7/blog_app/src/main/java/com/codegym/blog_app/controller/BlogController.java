@@ -74,4 +74,11 @@ public class BlogController {
         model.addAttribute("blog", blogService.findById(id));
         return "/detail";
     }
+
+    @GetMapping("/seach")
+    public String seachByName(@RequestParam(defaultValue = "0") int page, String name,Model model){
+        Sort sort = Sort.by("dateOfCreate").descending();
+        model.addAttribute("blogList",blogService.findByName(name,PageRequest.of(page,3,sort)));
+        return "/list";
+    }
 }

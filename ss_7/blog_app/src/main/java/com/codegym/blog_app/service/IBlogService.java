@@ -15,4 +15,6 @@ public interface IBlogService{
     void save(Blog blog);
 
     Optional<Blog> findById(Integer id);
+
+    Page<Blog> findByName(String name,PageRequest pageable);
 }

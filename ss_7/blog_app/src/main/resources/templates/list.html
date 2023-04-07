@@ -22,7 +22,24 @@
 <th:block th:if="${message}">
     <p th:text="${message}" style="color: red;"></p>
 </th:block>
-<h4><a th:href="@{/create}">Create Blog</a></h4>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/create}" style="color: #0a53be">Create Blog</a>
+                </li>
+            </ul>
+            <form class="d-flex" action="/seach">
+                <input class="form-control me-2" type="search" name="name" placeholder="Search by name" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit" >Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
 <table class="table">
     <thead>
     <tr style="background: black;color: white">

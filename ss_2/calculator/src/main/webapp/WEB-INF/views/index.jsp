@@ -5,10 +5,12 @@
   Time: 3:41 CH
   To change this template use File | Settings | File Templates.
 --%>
+<link href="../bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<script src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>calculator</title>
 </head>
 <body>
 <form action="calculator" method="post">

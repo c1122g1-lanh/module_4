@@ -1,7 +1,5 @@
 package com.codegym.product_management.model;
 
-import jdk.Exported;
-
 import javax.persistence.*;
 
 @Entity
