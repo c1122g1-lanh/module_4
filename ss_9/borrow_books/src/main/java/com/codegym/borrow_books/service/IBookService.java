@@ -9,4 +9,6 @@ public interface IBookService {
     List<Book> findAll();
 
     Optional<Book> findById(int id);
+
+    public void saveBook(Book book);
 }
