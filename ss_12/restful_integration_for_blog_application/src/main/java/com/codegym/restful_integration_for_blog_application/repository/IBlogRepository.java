@@ -1,0 +1,13 @@
+package com.codegym.restful_integration_for_blog_application.repository;
+
+import com.codegym.restful_integration_for_blog_application.model.Blog;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface IBlogRepository extends PagingAndSortingRepository<Blog, Integer> {
+    Page<Blog> findBlogByNameContaining(String name, PageRequest pageRequest);
+
+}
